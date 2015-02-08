@@ -1,8 +1,16 @@
-FROM alfonso/nginx-phalcon
+#Prepare image from Nginx Official
+FROM dockerfile/nginx
 
-RUN apt-get install -y  nano php5-intl php5-memcache php5-curl php-apc
+ENV DEBIAN_FRONTEND noninteractive
 
+#Setup PHP
+RUN apt-get update
+RUN apt-get install -y php5-fpm nano php5-intl php5-memcache php5-curl php-apc
+
+#Setup Symfony
+VOLUME ["/var/www/app/logs", "/var/www/app/cache"]
+
+#Setup Nginx
 ADD symfony.conf /etc/nginx/sites-available/default
 
-CMD service php5-fpm start && nginx
 

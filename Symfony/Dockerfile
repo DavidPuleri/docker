@@ -13,7 +13,6 @@ VOLUME ["/var/www/app/logs", "/var/www/app/cache","/var/www"]
 #Setup Nginx
 ADD symfony.conf /etc/nginx/sites-available/default
 ADD www.conf /etc/php5/fpm/pool.d/www.conf
-RUN chmod 666 /var/run/php5-fpm.sock
 
 
 

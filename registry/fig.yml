@@ -1,0 +1,9 @@
+registry:
+  image: registry
+  ports: 
+  - "5000:5000"
+  environment:
+  - VIRTUAL_HOST=docker-registry.mycoachfootball.com
+  volumes:
+  - ~/docker-registry/storage:/opt/registry
+  - ~/docker-registry/index:/opt/sqlitedb

@@ -1,5 +1,5 @@
 #Prepare image from Nginx Official
-FROM lpi/nginx
+FROM global/nginx
 
 #Setup Symfony
 VOLUME ["/var/www/app/logs", "/var/www/app/cache","/var/www"]

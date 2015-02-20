@@ -11,3 +11,6 @@ RUN chown www-data /etc/php5/fpm/pool.d/www.conf
 
 CMD service memcached start && service php5-fpm start && nginx
 
+
+#base/symfony
+

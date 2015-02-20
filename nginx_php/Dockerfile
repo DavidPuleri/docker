@@ -8,3 +8,5 @@ RUN apt-get install -y memcached nano php5-intl php5-memcache php5-memcached php
 
 #Setup Nginx Global Settings
 ADD nginx.conf /etc/nginx/nginx.conf
+ADD www.conf /etc/php5/fpm/pool.d/www.conf
+RUN chown www-data /etc/php5/fpm/pool.d/www.conf

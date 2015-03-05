@@ -1,0 +1,6 @@
+jcr:
+  build: .
+  ports:
+   - 8888:8080
+  volumes:
+   - "~/jackrabbit/jackrabbit:/opt/jackrabbit"

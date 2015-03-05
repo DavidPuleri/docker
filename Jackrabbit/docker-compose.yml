@@ -3,7 +3,7 @@ jcr:
   ports:
    - 8888:8080
   volumes:
-   - "~/jackrabbit/jackrabbit:/opt/jackrabbit"
+   - "~/nice.fr/jackrabbit/jackrabbit:/opt/jackrabbit"
 
 elasticsearch:
   image: dockerfile/elasticsearch
@@ -11,4 +11,13 @@ elasticsearch:
   - 9200:9200
   - 9300:9300
   volumes:
-   - "~/elasticsearch:/data"
+   - "~/nice.fr/elasticsearch:/data"
+
+mysql:
+  image: mysql
+  volumes:
+   - "~/nice.fr/mysql:/var/lib/mysql"
+  environment:
+   - MYSQL_ROOT_PASSWORD=dbpass
+  ports:
+  - 3306:3306

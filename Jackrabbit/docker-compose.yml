@@ -4,3 +4,11 @@ jcr:
    - 8888:8080
   volumes:
    - "~/jackrabbit/jackrabbit:/opt/jackrabbit"
+
+elasticsearch:
+  image: dockerfile/elasticsearch
+  ports:
+  - 9200:9200
+  - 9300:9300
+  volumes:
+   - "~/elasticsearch:/data"

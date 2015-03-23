@@ -1,12 +1,14 @@
-FROM alfonso/nginx-phalcon
+FROM dockerfile/nginx
 
 ENV DEBIAN_FRONTEND noninteractive
 
 #Setup PHP
 RUN apt-get update --fix-missing
-RUN apt-get install -y php5-intl php5-memcache php5-memcached php5-curl php-apc
+RUN apt-get install -y php5-fpm php5-memcache php5 php5-cli php5-curl php5-gd php5-imagick php5-mcrypt php5-mysql php5-sqlite php5-xdebug php5-xmlrpc php5-xsl php-pear php5-intl php-apc
 
 #Setup Nginx Global Settings
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD www.conf /etc/php5/fpm/pool.d/www.conf
 RUN chown www-data /etc/php5/fpm/pool.d/www.conf
+
+CMD service php5-fpm start && nginx

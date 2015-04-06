@@ -8,7 +8,8 @@ foreach($runningProcess as $processToRestart){
 
 if(0 == count($runningProcess)){
     echo 'No process found';
-    exec('docker rm mycoachfootball_web');
+    $result = exec('docker rm mycoachfootball_web');
+
 
     $workspace = $argv[1];
     $baseLogFolder = $argv[2];
@@ -21,7 +22,10 @@ if(0 == count($runningProcess)){
         '--name mycoachfootball_web ' .
         'docker-registry.mycoachfootball.com:5000/global/nginx';
 
-    exec($cmd);
+    echo $cmd;
+    $ran = exec($cmd, $result, $returned);
+    var_dump($result);
+    var_dump($returned);
 
 
 

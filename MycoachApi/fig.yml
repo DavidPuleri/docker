@@ -4,6 +4,8 @@ mysql:
     - "3306"
   environment:
     - MYSQL_ROOT_PASSWORD=pass
+  volumes:
+    - ~/mycoach-api/mysql:/var/lib/mysql
 mycoachapi:
   image: mycoach-api
   links:

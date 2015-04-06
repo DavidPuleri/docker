@@ -15,7 +15,7 @@ if(0 == count($runningProcess)){
     $baseLogFolder = $argv[2];
 
     $cmd='docker run -d -p "1234:80" ' .
-        '-v "'.$workspace.':/var/www/html" ' .
+        '-v "'.$workspace.':/usr/share/nginx/html" ' .
         '-v "'.$baseLogFolder.':/var/log/nginx" ' .
         '-v "'.getcwd().'/host:/etc/nginx/sites-enabled" ' .
         '--link mycoachfootball_db:mysql ' .

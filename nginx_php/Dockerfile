@@ -15,13 +15,10 @@ RUN chown www-data /etc/php5/fpm/pool.d/www.conf
 
 RUN mkdir /workspace
 
-RUN mkdir /data
-
 VOLUME /workspace
 
-VOLUME /data
+COPY .environment /.environment
 
-
-COPY .environment /data/.environment
+RUN chmod -R 777 /.environment
 
 CMD service php5-fpm start && nginx

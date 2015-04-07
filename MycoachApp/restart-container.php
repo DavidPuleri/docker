@@ -13,6 +13,7 @@ if(0 == count($runningProcess)){
 
     $workspace = $argv[1];
     $baseLogFolder = $argv[2];
+    $env = $argv[3];
 
     $cmd='docker run -d -p "1234:80" ' .
         '-v "'.$workspace.':/workspace" ' .
@@ -22,11 +23,14 @@ if(0 == count($runningProcess)){
         '--name mycoachfootball_web ' .
         'docker-registry.mycoachfootball.com:5000/global/nginx';
 
-    echo $cmd;
+    echo "Running ".$cmd;
     $ran = exec($cmd, $result, $returned);
-    var_dump($result);
-    var_dump($returned);
 
 
 
 }
+
+
+exec('sh update-config.sh '.$workspace.' '.$env);
+
+

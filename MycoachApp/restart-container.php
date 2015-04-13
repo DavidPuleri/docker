@@ -18,7 +18,7 @@ if(0 == count($runningProcess)){
     $cmd='docker run -d -p "1234:80" ' .
         '-v "'.$workspace.':/workspace" ' .
         '-v "'.$baseLogFolder.':/var/log/nginx" ' .
-        '-v "'.getcwd().'/host:/etc/nginx/conf.d" ' .
+        '-v "'.getcwd().'/'.$application.':/etc/nginx/conf.d" ' .
         '--link '.$databaseLink.':mysql ' .
         '--name ' . $application .
         'docker-registry.mycoachfootball.com:5000/global/nginx';
@@ -29,8 +29,4 @@ if(0 == count($runningProcess)){
 
 
 }
-
-
-exec('sh update-config.sh '.$workspace.' '.$env);
-
 

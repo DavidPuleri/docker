@@ -1,28 +1,27 @@
 <?php
 
-exec("docker ps | grep ".$application." | awk '{print $1}'",$runningProcess, $returnValue);
-foreach($runningProcess as $processToRestart){
+exec("docker ps | grep " . $application . " | awk '{print $1}'", $runningProcess, $returnValue);
+foreach ($runningProcess as $processToRestart) {
     echo 'Restarting container';
-    exec('docker restart '.$processToRestart,$output);
+    exec('docker restart ' . $processToRestart, $output);
 }
 
-if(0 == count($runningProcess)){
+if (0 == count($runningProcess)) {
     echo 'No process found';
-    $result = exec('docker rm '.$application);
+    $result = exec('docker rm ' . $application);
 
-    $cmd='docker run -d -p "'.$port.':80" ' .
-        '-v "'.$workspace.':/workspace" ' .
-        '-v "'.$baseLogFolder.':/var/log/nginx" ' .
-        '-v "'.getcwd().'/'.$application.':/etc/nginx/conf.d" ' .
-        '--link '.$databaseLink.':mysql ' .
+    $cmd = 'docker run -d -p "' . $port . ':80" ' .
+        '-v "' . $workspace . ':/workspace" ' .
+        '-v "' . $baseLogFolder . ':/var/log/nginx" ' .
+        '-v "' . getcwd() . '/' . $application . ':/etc/nginx/conf.d" ' .
+        '--link ' . $databaseLink . ':mysql ' .
         '--name ' . $application .
-        '-e "VIRTUAL_HOST= ' . $host .
+        '-e "VIRTUAL_HOST= ' . $host . '"' .
 
-        'docker-registry.mycoachfootball.com:5000/global/nginx';
+        ' docker-registry.mycoachfootball.com:5000/global/nginx';
 
-    echo 'Running '.$cmd;
+    echo 'Running ' . $cmd;
     $ran = exec($cmd, $result, $returned);
-
 
 
 }

@@ -10,5 +10,7 @@ $baseLogFolder = $argv[2];
 $env = 'qa';
 $application = 'mycoachfootball_web';
 $databaseLink = 'mycoachfootball_db';
+$port = "1234";
+$host = 'app.mycoachfootball.com';
 
 include './restart-container.php';

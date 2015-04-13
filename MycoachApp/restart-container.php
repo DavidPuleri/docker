@@ -15,12 +15,14 @@ if(0 == count($runningProcess)){
     $baseLogFolder = $argv[2];
     $env = $argv[3];
 
-    $cmd='docker run -d -p "1234:80" ' .
+    $cmd='docker run -d -p "'.$port.':80" ' .
         '-v "'.$workspace.':/workspace" ' .
         '-v "'.$baseLogFolder.':/var/log/nginx" ' .
         '-v "'.getcwd().'/'.$application.':/etc/nginx/conf.d" ' .
         '--link '.$databaseLink.':mysql ' .
         '--name ' . $application .
+        '-e "VIRTUAL_HOST= ' . $host .
+
         'docker-registry.mycoachfootball.com:5000/global/nginx';
 
     echo 'Running '.$cmd;

@@ -10,5 +10,7 @@ $baseLogFolder = $argv[2];
 $env = 'qa';
 $application = 'mmarena_web';
 $databaseLink = 'mmarena_db';
+$port = "55555";
+$host = 'www.mmarena.com';
 
 include './restart-container.php';

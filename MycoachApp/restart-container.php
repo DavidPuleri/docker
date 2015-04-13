@@ -10,11 +10,6 @@ if(0 == count($runningProcess)){
     echo 'No process found';
     $result = exec('docker rm '.$application);
 
-
-    $workspace = $argv[1];
-    $baseLogFolder = $argv[2];
-    $env = $argv[3];
-
     $cmd='docker run -d -p "'.$port.':80" ' .
         '-v "'.$workspace.':/workspace" ' .
         '-v "'.$baseLogFolder.':/var/log/nginx" ' .

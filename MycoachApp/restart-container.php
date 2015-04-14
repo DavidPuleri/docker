@@ -15,7 +15,7 @@ if (0 == count($runningProcess)) {
         '-v "' . $baseLogFolder . ':/var/log/nginx" ' .
         '-v "' . getcwd() . '/' . $application . ':/etc/nginx/sites-enabled" ' .
         '--link ' . $databaseLink . ':mysql ' .
-        '-e "VIRTUAL_HOST=' . $host . '"' .
+        '-e "VIRTUAL_HOST=' . $host . '" ' .
         '--name ' . $application .
         ' docker-registry.mycoachfootball.com:5000/global/nginx';
 

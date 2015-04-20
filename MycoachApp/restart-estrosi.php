@@ -11,6 +11,6 @@ $env = 'prod';
 $application = 'estrosi2015_web';
 $databaseLink = 'estrosi2015_db';
 $port = "55556";
-$host = 'www.estrosi2015.com';
+$host = 'www.estrosi2015.fr';
 
 include './restart-container.php';

@@ -13,7 +13,7 @@ if (0 == count($runningProcess)) {
     $cmd = 'docker run -d -p "' . $port . ':80" ' .
         '-v "' . $workspace . ':/workspace" ' .
         '-v "' . $baseLogFolder . ':/var/log/nginx" ' .
-        '-v "' . getcwd() . '/' . $application . ':/etc/nginx/sites-enabled" ' .
+        '-v "' . getcwd() . '/' . $application . ':/etc/nginx/conf.d" ' .
         '--link ' . $databaseLink . ':mysql ' .
         '-e "VIRTUAL_HOST=' . $host . '" ' .
         '--name ' . $application .

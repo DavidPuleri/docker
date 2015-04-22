@@ -10,12 +10,20 @@ if (0 == count($runningProcess)) {
     echo 'No process found';
     $result = exec('docker rm ' . $application);
 
-    $cmd = 'docker run -d -p "' . $port . ':80" ' .
-        '-v "' . $workspace . ':/workspace" ' .
+    $cmd = 'docker run -d';
+
+    if ($port) {
+        $cmd = '-p "' . $port . ':80" ';
+    }
+
+    $cmd .= '-v "' . $workspace . ':/workspace" ' .
         '-v "' . $baseLogFolder . ':/var/log/nginx" ' .
-        '-v "' . getcwd() . '/' . $application . ':/etc/nginx/conf.d" ' .
-        '--link ' . $databaseLink . ':mysql ' .
-        '-e "VIRTUAL_HOST=' . $host . '" ' .
+        '-v "' . getcwd() . '/' . $application . ':/etc/nginx/conf.d" ';
+
+    if ($databaseLink) {
+        $cmd .= '--link ' . $databaseLink . ':mysql ';
+    }
+    $cmd .= '-e "VIRTUAL_HOST=' . $host . '" ' .
         '--name ' . $application .
         ' docker-registry.mycoachfootball.com:5000/global/nginx';
 

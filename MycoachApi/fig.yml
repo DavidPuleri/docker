@@ -11,4 +11,4 @@ mycoachapi:
   links:
     - mysql:mysql
   ports:
-    - "22222:8080"
+    - "22222:80"

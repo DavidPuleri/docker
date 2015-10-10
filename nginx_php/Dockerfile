@@ -9,12 +9,15 @@ RUN php5enmod mcrypt
 
 #Setup Nginx Global Settings
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY php-fpm.conf /etc/php5/fpm/php-fpm.conf
 COPY www.conf /etc/php5/fpm/pool.d/www.conf
 COPY php.ini  /etc/php5/fpm/php.ini
 
 RUN chown www-data /etc/php5/fpm/pool.d/www.conf
 
 RUN mkdir -p /workspace
+
+RUN mkdir -p /php-fpm/www/log
 
 VOLUME /workspace
 

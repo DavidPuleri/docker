@@ -16,4 +16,4 @@ RUN mkdir -p /php-fpm/www/log
 
 EXPOSE 9000
 
-RUN php5-fpm --allow-to-run-as-root --nodaemonize
+CMD ["/usr/sbin/php5-fpm"]

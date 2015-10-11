@@ -12,7 +12,7 @@ COPY php-fpm.conf /etc/php5/fpm/php-fpm.conf
 COPY www.conf /etc/php5/fpm/pool.d/www.conf
 COPY php.ini  /etc/php5/fpm/php.ini
 
-MKDIR -p /php-fpm/www
+RUN mkdir -p /php-fpm/www
 
 EXPOSE 9000
 

@@ -16,4 +16,4 @@ RUN mkdir -p /php-fpm/www/log
 
 EXPOSE 9000
 
-CMD ["/usr/sbin/php5-fpm"]
+CMD ["php5-fpm"]

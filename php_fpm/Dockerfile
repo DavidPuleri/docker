@@ -14,6 +14,7 @@ COPY php.ini  /etc/php5/fpm/php.ini
 
 RUN mkdir -p /php-fpm/www/log
 
-EXPOSE 9000
 
 CMD ["php5-fpm"]
+
+EXPOSE 9000
